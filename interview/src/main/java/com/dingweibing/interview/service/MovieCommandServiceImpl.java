@@ -9,25 +9,25 @@ import java.util.List;
 
 @Service
 public class MovieCommandServiceImpl implements MovieCommandService {
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     @Inject
-    public MovieCommandServiceImpl(MovieRepository movieRepository) {
+    public MovieCommandServiceImpl(final MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
     @Override
-    public void createMovieIndexBulk(List<Movie> movies) {
+    public void createMovieIndexBulk(final List<Movie> movies) {
 
     }
 
     @Override
-    public void createMovieIndex(Movie movie) {
+    public void createMovieIndex(final Movie movie) {
 
     }
 
     @Override
-    public void initData(List<Movie> movies) {
+    public void initData(final List<Movie> movies) {
         movieRepository.saveAll(movies);
     }
 }

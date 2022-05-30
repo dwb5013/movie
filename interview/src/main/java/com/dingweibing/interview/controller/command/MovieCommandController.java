@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 public class MovieCommandController {
-    private MovieCommandService movieCommandService;
-    private List<Movie> initData;
+    private final MovieCommandService movieCommandService;
+    private final List<Movie> initData;
 
     @Inject
-    public MovieCommandController(MovieCommandService movieCommandService, List<Movie> initData) {
+    public MovieCommandController(final MovieCommandService movieCommandService, final List<Movie> initData) {
         this.movieCommandService = movieCommandService;
         this.initData = initData;
     }
