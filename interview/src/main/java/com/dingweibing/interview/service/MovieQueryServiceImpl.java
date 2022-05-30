@@ -5,12 +5,14 @@ import com.dingweibing.interview.repository.MovieRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import java.util.List;
 
 @Service
 public class MovieQueryServiceImpl implements MovieQueryService {
     private MovieRepository movieRepository;
 
+    @Inject
     public MovieQueryServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
