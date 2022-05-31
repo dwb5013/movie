@@ -2,8 +2,6 @@ package com.dingweibing.interview.service;
 
 import org.springframework.stereotype.Service;
 
-import java.net.http.HttpClient;
-
 // 本来は各マイクロサービスの設定データはクラウド上で取得することが一般的ですが、
 // 今回は試作のため、ハードコーディングで定義する
 @Service
@@ -13,7 +11,7 @@ public class ConfigServiceImpl implements ConfigService {
     public String getEsHostname() {
         // HttpClient httpClient = HttpClient.newBuilder().authenticator(usernameAndPassword ? SSL Certs ?).build();
         // httpClient.send(ConfigService.getSystemId(), 172.218.xxx.xxx)
-        return "localhost";
+        return "es01";
     }
 
     @Override
@@ -49,12 +47,18 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
-    public Integer getQueryServiceMaxResultSize() {
-        return 10000;
+    public Integer getQueryServiceMaxPage() {
+        return 50;
     }
 
     @Override
+    public Integer getQueryServiceMaxPageSize() {
+        return 100;
+    }
+
+
+    @Override
     public Integer getCommandServiceMaxRequestSize() {
-        return 10000;
+        return 1000;
     }
 }

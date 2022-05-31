@@ -15,7 +15,9 @@ public interface ConfigService {
 
     Integer getEsSocketTimeoutLength();
 
-    Integer getQueryServiceMaxResultSize();
+    Integer getQueryServiceMaxPageSize();
+
+    Integer getQueryServiceMaxPage();
 
     Integer getCommandServiceMaxRequestSize();
 

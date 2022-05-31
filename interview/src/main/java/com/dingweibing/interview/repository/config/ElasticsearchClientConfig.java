@@ -1,7 +1,9 @@
-package com.dingweibing.interview.config;
+package com.dingweibing.interview.repository.config;
 
 import com.dingweibing.interview.model.Movie;
 import com.dingweibing.interview.service.ConfigService;
+import com.dingweibing.interview.service.MovieCommandService;
+import com.dingweibing.interview.service.MovieQueryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
@@ -21,6 +23,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 import javax.inject.Inject;
@@ -76,19 +79,20 @@ public class ElasticsearchClientConfig extends AbstractElasticsearchConfiguratio
         return null;
     }
 
+    @Bean
+    public ElasticsearchRestTemplate elasticsearchRestTemplate() {
+        return new ElasticsearchRestTemplate(elasticsearchClient());
+    }
+
     // 試作のため、仮データでを使う
     @Bean
-    public List<Movie> initData() {
+    public List<Movie> getInitData() {
         try {
-            // create object mapper instance
             ObjectMapper mapper = new ObjectMapper();
-
-            // convert JSON array to list of books
-            List<Movie> movies = Arrays.asList(mapper.readValue(moviesData.getFile(), Movie[].class));
-            System.out.println(movies.size());
-            return movies;
+            return Arrays.asList(mapper.readValue(moviesData.getFile(), Movie[].class));
         } catch (Exception ex) {
-            throw new RuntimeException("error");
+            logger.error(ex.getMessage(), ex);
+            throw new IllegalArgumentException("init data error");
         }
     }
 }
