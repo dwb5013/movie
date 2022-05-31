@@ -15,9 +15,9 @@ public interface ConfigService {
 
     Integer getEsSocketTimeoutLength();
 
-    Long getQueryServiceMaxResultSize();
+    Integer getQueryServiceMaxResultSize();
 
-    Long getCommandServiceMaxRequestSize();
+    Integer getCommandServiceMaxRequestSize();
 
     static String getSystemId() {
         return System.getenv("SYSTEM_ID");

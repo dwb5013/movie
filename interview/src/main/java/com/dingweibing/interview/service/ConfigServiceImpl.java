@@ -49,12 +49,12 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
-    public Long getQueryServiceMaxResultSize() {
-        return 10000L;
+    public Integer getQueryServiceMaxResultSize() {
+        return 10000;
     }
 
     @Override
-    public Long getCommandServiceMaxRequestSize() {
-        return 10000L;
+    public Integer getCommandServiceMaxRequestSize() {
+        return 10000;
     }
 }

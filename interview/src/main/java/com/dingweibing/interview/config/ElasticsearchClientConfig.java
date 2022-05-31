@@ -68,7 +68,7 @@ public class ElasticsearchClientConfig extends AbstractElasticsearchConfiguratio
                             .setDefaultCredentialsProvider(credentialsProvider))
                     .setRequestConfigCallback(requestConfigBuilder -> requestConfigBuilder
                             .setConnectTimeout(configService.getEsConnectTimeoutLength())
-                            .setSocketTimeout(configService.getEsConnectTimeoutLength())));
+                            .setSocketTimeout(configService.getEsSocketTimeoutLength())));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

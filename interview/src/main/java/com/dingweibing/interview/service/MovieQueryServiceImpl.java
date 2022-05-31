@@ -1,5 +1,6 @@
 package com.dingweibing.interview.service;
 
+import com.dingweibing.interview.config.QueryServiceConfig;
 import com.dingweibing.interview.model.Movie;
 import com.dingweibing.interview.repository.MovieRepository;
 import org.springframework.data.domain.Pageable;
@@ -13,12 +14,12 @@ import java.util.Optional;
 @Service
 public class MovieQueryServiceImpl implements MovieQueryService {
     private final MovieRepository movieRepository;
-    private final Long queryServiceMaxResultSize;
+    private final QueryServiceConfig queryServiceConfig;
 
     @Inject
-    public MovieQueryServiceImpl(final MovieRepository movieRepository, final Long queryServiceMaxResultSize) {
+    public MovieQueryServiceImpl(final MovieRepository movieRepository, final QueryServiceConfig queryServiceConfig) {
         this.movieRepository = movieRepository;
-        this.queryServiceMaxResultSize = queryServiceMaxResultSize;
+        this.queryServiceConfig = queryServiceConfig;
     }
 
 
@@ -45,7 +46,7 @@ public class MovieQueryServiceImpl implements MovieQueryService {
     @Override
     public List<Movie> getAllMovies() {
         List<Movie> result = new LinkedList<>();
-        movieRepository.findAll(Pageable.ofSize(1000)).forEach(result::add);
+        movieRepository.findAll(Pageable.ofSize(queryServiceConfig.maxResultSize)).forEach(result::add);
 
         return result;
     }
