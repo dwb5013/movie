@@ -3,6 +3,7 @@
 localhost:8080/movie
 * Java
 * Spring boot
+* Swagger (RESTFul)
 * Elasticsearc
     - マスタ * 1
     - クラスタ * 3
@@ -14,7 +15,9 @@ localhost:8080/movie
 localhost:8081/favorites
 * Java
 * Spring boot
+* Swagger (RESTFul)
 * Postgresql
+* Flyway(DDL管理)
 * Adminer(localhost:8088)
 * Load Balancer無し(時間のため)
 * Cache無し(時間のため)
