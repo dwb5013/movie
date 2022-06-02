@@ -1,6 +1,6 @@
 # 概要
 ## 映画検索サービス
-localhost:8080/movie
+### localhost:8080/movie
 * Java
 * Spring boot
 * Swagger (RESTFul)
@@ -11,8 +11,10 @@ localhost:8080/movie
 * Load Balancer無し(時間のため)
 * Cache無し(時間のため)
 
+
 ## ユーザー気に入りサービス
-localhost:8081/favorites
+### localhost:8081/favorites
+
 * Java
 * Spring boot
 * Swagger (RESTFul)
@@ -21,6 +23,11 @@ localhost:8081/favorites
 * Adminer(localhost:8088)
 * Load Balancer無し(時間のため)
 * Cache無し(時間のため)
+
+### Basic Authアカウント
+ username: admin  password: pwd
+
+ username: bob password: alice
 
 # Windows
 Dockerインストール必要
